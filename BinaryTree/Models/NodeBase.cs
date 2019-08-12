@@ -13,6 +13,18 @@ namespace BinaryTree.Models
         public NodeBase<T> LeftChild { get; set; }
 
         public NodeBase<T> RightChild { get; set; }
+
+        public bool IsRootNode { get; set; }
+
+        public NodeToParentType NodeToParentType { get; set; }
+    }
+
+
+    public enum NodeToParentType
+    {
+        None,
+        LeftChild,
+        RightChild
     }
 
 

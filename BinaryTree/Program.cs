@@ -14,6 +14,7 @@ namespace BinaryTree
 
         private static void BuildBinaryTree(string[] values)
         {
+            // The initial value will be the root node
             BinaryTree<string> binaryTree = new TextBasedBinaryTree(values[0]);
 
             for(int i = 1; i < values.Length; i++)

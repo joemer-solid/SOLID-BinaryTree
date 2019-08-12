@@ -10,7 +10,14 @@ namespace BinaryTree.Models
     public sealed class TextBasedBinaryTree : BinaryTree<string>
     {
 
-        public TextBasedBinaryTree(string rootNodeValue) : base(rootNodeValue) { }
+        /// <summary>Initializes a new instance of the <see cref="TextBasedBinaryTree"/> class.</summary>
+        /// <param name="rootNodeValue">The root node value.</param>
+        public TextBasedBinaryTree(string rootNodeValue) : base(rootNodeValue)
+        {
+            // do nothing
+        }
+
+        #region Properties
 
         public override NodeBase<string> RootNode { get; protected set; }
 
@@ -18,7 +25,9 @@ namespace BinaryTree.Models
 
         protected override INodeBuilder<string> NodeBuilder { get; set; }
 
-       
+        #endregion
+
+
 
         public override void AddNode(string nodeValue)
         {
@@ -37,21 +46,23 @@ namespace BinaryTree.Models
 
         protected override void Initialize(string rootNodeValue)
         {
+            // Initializes the Binary Tree by creating a root node
             NodeBuilder = new TextValueNodeBuilder();
 
-            RootNode = BuildNode(rootNodeValue);
+            RootNode = BuildNode(rootNodeValue, true);
 
             CurrentNode = RootNode;
                  
         }
 
 
-        private NodeBase<string> BuildNode(string nodeValue)
+        private NodeBase<string> BuildNode(string nodeValue, bool isRootNode)
         {
             return NodeBuilder.Build(new NodeBuilderParams<string>
             {
                 Id = GetNewNodeId(),
-                Value = nodeValue
+                Value = nodeValue,
+                IsRootNode = isRootNode
             });
         }
 

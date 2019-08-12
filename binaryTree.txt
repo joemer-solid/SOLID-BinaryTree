@@ -1,0 +1,34 @@
+
+
+Tree	
+	Nodes
+		Node
+			Key : int
+			Value : T
+			LeftChild : Node
+			RightChild : Node
+			
+	
+
+		
+
+		RootNode : Node
+
+					BusinessRule Number Of Children <= 2	
+			
+						
+
+
+		ChildNode
+	
+			LeftChild		Each Left child is less than or equal to parent node
+			RightChild		Each Right child is greater than or equal to parent node
+
+
+
+		BinaryTree
+			RootNode 
+
+
+			
+			

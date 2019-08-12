@@ -14,7 +14,4 @@ namespace BinaryTree.Strategy
 
     public interface ITextBasedNodeAddEvaluator : IAddNodeEvaluator<Tuple<NodeBase<string>, string, int>> { }
 
-
-
-
 }

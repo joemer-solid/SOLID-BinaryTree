@@ -32,6 +32,7 @@ namespace BinaryTree.Strategy
             if (valueCompareResult == CompareResult.GreaterThan)
             {
                 // right child
+                // If no right child exists, build it
                 if (currentNode.RightChild == null)
                 {
                     currentNode.RightChild = BuildNode(addNodeValue, newNodeId);
@@ -39,7 +40,6 @@ namespace BinaryTree.Strategy
                 }
                 else
                 {
-
                     currentNode = currentNode.RightChild;
 
                     AddNode(currentNode, addNodeValue, newNodeId);

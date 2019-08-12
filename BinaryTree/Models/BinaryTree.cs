@@ -10,10 +10,14 @@ namespace BinaryTree.Models
     {
         private int _newNodeId;
 
+        #region Constructors
+
         public BinaryTree(T rootNodeValue)
         {
             Initialize(rootNodeValue);
         }
+
+        #endregion
 
         #region Properties
 
