@@ -7,9 +7,7 @@ namespace BinaryTree.Builders
         public int Id { get; set; }
 
         public T Value { get; set; }
-
-        public bool IsRootNode { get; set; }
-
+       
         public NodeToParentType NodeTypeToParent { get; set; }
 
         public Node<string> ParentRef { get; set; }

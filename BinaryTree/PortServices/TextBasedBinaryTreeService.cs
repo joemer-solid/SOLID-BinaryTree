@@ -3,21 +3,29 @@ using BinaryTree.Strategy;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using BinaryTree.Adapters;
 
 namespace BinaryTree.PortServices
 {
-    public sealed class TextBasedBinaryTreeService
+   
+    public sealed class TextBasedBinaryTreeService 
     {
+        
 
         public TextBasedBinaryTree CreateTextBasedBinaryTree(string[] values)
-        {
-            const int centerForRootPadLeft = 40;
-            INodeDisplayer<TextBasedNodeDisplayerParams<string>> 
-                nodeDisplayer = new TextBasedNodeDisplayer(centerForRootPadLeft);
+        {                       
 
             TextBasedBinaryTree textBasedBinaryTree = initializeTextBasedBTreeWithRootNode(values[0]);
 
+            TextBasedNodeDisplayer.Instance.SetNodePrintPosition(
+                new TextBasedNodeDisplayerParams<string> { NodeToDisplay = textBasedBinaryTree.RootNode });           
 
+            for (int i = 1; i < values.Length; i++)
+            {
+                textBasedBinaryTree.AddNode(values[i]);
+            }
+
+            return textBasedBinaryTree;
 
         }
 
@@ -28,9 +36,5 @@ namespace BinaryTree.PortServices
             return new TextBasedBinaryTree(rootNodeValue);
         }
 
-        private void setNodeDisplayPosition(Node<string> node, INodeDisplayer<TextBasedNodeDisplayerParams<string>> nodeDisplayer)
-        {
-            no
-        }
     }
 }

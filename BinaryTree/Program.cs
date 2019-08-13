@@ -1,6 +1,7 @@
 ﻿using BinaryTree.Builders;
 using System;
 using BinaryTree.Models;
+using BinaryTree.PortServices;
 
 namespace BinaryTree
 {
@@ -14,14 +15,11 @@ namespace BinaryTree
 
         private static void BuildBinaryTree(string[] values)
         {
-            // The initial value will be the root node
-            BinaryTree<string> binaryTree = new TextBasedBinaryTree(values[0]);
+            TextBasedBinaryTreeService textBasedBinaryTreeService = new TextBasedBinaryTreeService();
 
-            for(int i = 1; i < values.Length; i++)
-            {
-                binaryTree.AddNode(values[i]);
-            }
+            TextBasedBinaryTree textBasedBinaryTree = textBasedBinaryTreeService.CreateTextBasedBinaryTree(values);
 
+          
             System.Diagnostics.Debug.WriteLine("stop");
 
 

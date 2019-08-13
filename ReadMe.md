@@ -1,0 +1,1 @@
+Objective: Model the Binary Tree algorithm in the context of an object oriented MVC\Ports and Adapters (Hexagonal) architecture.

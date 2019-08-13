@@ -4,6 +4,6 @@
     {
         void SetNodePrintPosition(T t);
 
-        void DisplayNode();
+        void DisplayAllNodes(T t);
     }
 }

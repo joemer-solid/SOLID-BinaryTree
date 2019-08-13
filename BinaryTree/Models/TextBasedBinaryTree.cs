@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using BinaryTree.Builders;
+﻿using BinaryTree.Builders;
 using BinaryTree.Strategy;
+using System;
+using System.Text;
 using St = BinaryTree.Strategy;
 
 namespace BinaryTree.Models
@@ -49,74 +48,22 @@ namespace BinaryTree.Models
             // Initializes the Binary Tree by creating a root node
             NodeBuilder = new TextValueNodeBuilder();
 
-            RootNode = BuildNode(rootNodeValue, true);
+            RootNode = BuildNode(rootNodeValue);
 
-            CurrentNode = RootNode;
-                 
+            CurrentNode = RootNode;                 
         }
 
 
-        private NodeBase<string> BuildNode(string nodeValue, bool isRootNode)
+        private NodeBase<string> BuildNode(string nodeValue)
         {
             return NodeBuilder.Build(new NodeBuilderParams<string>
             {
                 Id = GetNewNodeId(),
-                Value = nodeValue,
-                IsRootNode = isRootNode
+                Value = nodeValue,                
+                NodeTypeToParent = NodeToParentType.None,
+                ParentRef = null
             });
-        }
-
-
-        public override string ToString()
-        {
-            StringBuilder builder = new StringBuilder();
-            bool moreNodes = true;
-            int treeDepth = 0;
-
-            builder.AppendLine("TextBasedBinaryTree");
-
-            NodeBase<string> currentNode = RootNode;
-
-            builder.AppendLine(getFormattedNodeIdAndValue(RootNode));
-
-            while (moreNodes)
-            {
-               
-                if (currentNode.LeftChild != null)
-                {
-                    builder.AppendLine(getFormattedNodeIdAndValue(currentNode));
-
-                    if(treeDepth > 0)
-                    {
-                        currentNode = currentNode.RightChild;
-                    }
-                   
-                }
-
-                if(currentNode.RightChild != null)
-                {
-                    builder.AppendLine(getFormattedNodeIdAndValue(currentNode));
-
-                    if(treeDepth > 0)
-                    {
-                       
-                    }
-                }
-
-                treeDepth++;
-
-                moreNodes = currentNode.LeftChild != null;
-
-
-                currentNode = currentNode.LeftChild;
-
-
-
-            }
-
-
-            return builder.ToString();
-        }
+        }   
 
 
 

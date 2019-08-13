@@ -10,11 +10,11 @@ namespace BinaryTree.Models
 
         public T Value { get; set; }
 
+        public NodeBase<T> ParentNode { get; set; }
+
         public NodeBase<T> LeftChild { get; set; }
 
-        public NodeBase<T> RightChild { get; set; }
-
-        public bool IsRootNode { get; set; }
+        public NodeBase<T> RightChild { get; set; }       
 
         public NodeToParentType NodeToParentType { get; set; }
     }

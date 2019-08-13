@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BinaryTree.Adapters;
 using BinaryTree.Builders;
 using BinaryTree.Models;
+using BinaryTree.PortServices;
 
 namespace BinaryTree.Strategy
 {
@@ -35,7 +37,8 @@ namespace BinaryTree.Strategy
                 // If no right child exists, build it
                 if (currentNode.RightChild == null)
                 {
-                    currentNode.RightChild = BuildNode(addNodeValue, newNodeId);
+                    currentNode.RightChild = BuildNode(addNodeValue, newNodeId, NodeToParentType.RightChild, (Node<string>)currentNode);
+
                     return;
                 }
                 else
@@ -49,7 +52,7 @@ namespace BinaryTree.Strategy
             {
                 if (currentNode.LeftChild == null)
                 {
-                    currentNode.LeftChild = BuildNode(addNodeValue,newNodeId);
+                    currentNode.LeftChild = BuildNode(addNodeValue,newNodeId, NodeToParentType.LeftChild, (Node<string>)currentNode);
                     return;
                 }
                 else
@@ -69,15 +72,20 @@ namespace BinaryTree.Strategy
         }
 
 
-        private NodeBase<string> BuildNode(string nodeValue, int newNodeId)
+        private NodeBase<string> BuildNode(string nodeValue, int newNodeId, NodeToParentType nodeTypeToParent, Node<string> parentRef)
         {
             return _textBasedNodeBuilder.Build(new NodeBuilderParams<string>
             {
                 Id = newNodeId,
-                Value = nodeValue
+                Value = nodeValue,
+                NodeTypeToParent = nodeTypeToParent,
+                ParentRef = parentRef
             });
         }
 
-       
+        private void SetNodeDisplayPosition(NodeBase<string> node)
+        {
+            TextBasedNodeDisplayer.Instance.SetNodePrintPosition(new TextBasedNodeDisplayerParams<string> { NodeToDisplay = node });
+        }
     }
 }

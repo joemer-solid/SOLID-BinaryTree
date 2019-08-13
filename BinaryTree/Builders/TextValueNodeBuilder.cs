@@ -12,9 +12,9 @@ namespace BinaryTree.Builders
             return new Node<string>()
             {
                 Id = t.Id,
-                Value = t.Value,
-                IsRootNode = t.IsRootNode,
-                NodeToParentType = t.NodeTypeToParent
+                Value = t.Value,                
+                NodeToParentType = t.NodeTypeToParent,
+                ParentNode = t.ParentRef
             };
         }
 
